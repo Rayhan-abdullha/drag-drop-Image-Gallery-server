@@ -2,7 +2,6 @@ const { signIn } = require("../../../lib/auth");
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(req.body);
   try {
     const token = await signIn({ email, password });
 
