@@ -4,7 +4,6 @@ const login = async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const token = await signIn({ email, password });
-
     const response = {
       code: 200,
       message: "Login Successfull",
