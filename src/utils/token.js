@@ -9,11 +9,7 @@ const decodeToken = ({ token, algorithm = "HS256" }) => {
     throw errors.serverError();
   }
 };
-const verifyToken = ({
-  token,
-  secret = process.env.ACCESS_TOKEN_SECRET,
-  algorithm = "HS256",
-}) => {
+const verifyToken = ({ token, secret = "my-secret", algorithm = "HS256" }) => {
   try {
     return jwt.verify(token, secret, { algorithms: [algorithm] });
   } catch (err) {

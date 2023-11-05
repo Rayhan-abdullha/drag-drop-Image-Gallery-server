@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const generateToken = ({
   payload,
-  secret = process.env.ACCESS_TOKEN_SECRET,
+  secret = "my-secret",
   algorithm = "HS256",
 }) => {
   try {
