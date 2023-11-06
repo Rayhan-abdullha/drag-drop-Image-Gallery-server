@@ -1,12 +1,13 @@
 const Gallery = require("../../model/Gallery");
 const User = require("../../model/User");
-const { BadRequest } = require("../../utils/error");
+const { BadRequest, authorizetionError } = require("../../utils/error");
 
 const findAllImages = async () => {
   return await Gallery.find({});
 };
 
 const findUserImg = async ({ user = {} }) => {
+  console.log(user);
   return await Gallery.find({ author: user.id });
 };
 
@@ -23,7 +24,10 @@ const uploadImage = async ({ img, user = {} }) => {
   };
 };
 
-const deleteImages = async ({ ids = [] }) => {
+const deleteImages = async ({ ids = [], user = {} }) => {
+  if (!user) {
+    throw authorizetionError();
+  }
   if (!ids.length) {
     throw BadRequest();
   }

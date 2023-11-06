@@ -6,8 +6,9 @@ const generateToken = ({
   secret = "my-secret",
   algorithm = "HS256",
 }) => {
+  const expiration = 30 * 24 * 60 * 60;
   try {
-    return jwt.sign(payload, secret, { expiresIn: "2h", algorithm });
+    return jwt.sign(payload, secret, { expiresIn: expiration, algorithm });
   } catch (err) {
     throw errors.serverError();
   }

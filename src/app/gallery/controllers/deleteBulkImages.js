@@ -1,10 +1,9 @@
 const { deleteImages } = require("../../../lib/gallery");
 
 const deleBulkImages = async (req, res, next) => {
-  const { ids } = req.body;
-
+  const ids = req.body;
   try {
-    await deleteImages({ ids });
+    await deleteImages({ ids, user: req.user });
 
     return res.status(200).json({
       code: 200,
