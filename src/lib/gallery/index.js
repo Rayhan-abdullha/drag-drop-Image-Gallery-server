@@ -7,7 +7,6 @@ const findAllImages = async () => {
 };
 
 const findUserImg = async ({ user = {} }) => {
-  console.log(user);
   return await Gallery.find({ author: user.id });
 };
 
